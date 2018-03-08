@@ -1,0 +1,118 @@
+<main id="main">
+
+  <!--  ************************** Left Column **************************-->
+  <section class="leftCol">
+    <h2 id="currentPseudo">{{currentUser.pseudo}}</h2>
+
+    <span class="friendScroll" (click)="hoverIn()" role="button"
+          title="friends">Friends</span>
+    <div *ngIf="hoverEdit">
+      <ul class="submenu" *ngFor="let friend of friends">
+        <li>
+          <span (click)="details2(friend)">{{friend.pseudo}}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!--  ************************** Left Column **************************-->
+
+  <!--  ************************** Display Movies **************************-->
+
+  <!--  ************************** Display Movies **************************-->
+
+  <div class="div1" Kenza>
+    <ul class="ul1">
+      <li *ngFor="let movie of movies" class="li1">
+        <a href="#info" (click)="displayInformation(movie)">
+
+          <img src="{{movieInfo.Poster}}" style="width:200px;height:300px;">
+          <h3 class="title">{{movie.title}}</h3></a>
+        <span>Genre:</span> {{movieInfo.Genre}}<br>
+        <span>Year of release:</span> {{movieInfo.Year}}<br>
+        <span>Rated:</span> {{movieInfo.Rated}}<br>
+        <span>Language:</span> {{movieInfo.Language}}<br>
+        <span>Synopsis:</span> <p>{{movieInfo.Plot}}</p>
+
+
+      </li>
+    </ul>
+  </div>
+
+  <!--  ****************************** Display Movies **************************-->
+
+  <!--  ********************************* Add forms ****************************-->
+  <!--  ************************** Movie **************************-->
+
+  <form class="add">
+    Search a Movie : <input type="text" name="Movie" [(ngModel)]="movieTitleInput" (click)="movieTitleInput=''"
+                            (input)="findOMDBMovies()">
+    <div *ngFor="let movie of foundMovies">
+      <ul>
+        <li>
+          <a href="#{{movie.imdbID}}" (click)="moviePopupIn(movie)">
+            {{movie.Title}}
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    {{foundMovie.Title}}
+  </form>
+
+  <!--  ************************** Movie **************************-->
+  <!--  ************************** Friend **************************-->
+  <!--Asmaa-->
+  <form class="addF">
+    <div>
+      Search friends :
+      <select name="friends">
+        <option *ngFor="let user of users" [value]="user.pseudo" (change)="addFriends(user)">{{user.pseudo}} <input  type="text" name="Friends" [(ngModel)]="user.pseudo"> </option>
+      </select>
+      <button class="btn btn-success" type="button">
+        Add
+      </button>
+
+    </div>
+  </form>
+
+
+
+
+  <!--  ************************** Friend **************************-->
+  <!--  ********************************* Add forms ****************************-->
+
+  <!-- Confirmation Popup to Like a movie -->
+
+  <div *ngIf="popupEdit" class="modal-box outer ">
+    <div class="modal-box inner">
+      <header>
+        <h2>Ajout d'un film</h2>
+      </header>
+      <div class="inner-content">
+        <!--Message goes here-->
+        Etes vous sûr de vouloir ajouter :
+        <span class="filmDescription">{{selectedMovie.Title}}</span>
+        ?
+      </div>
+      <div class="inner-buttons">
+        <button class="btn btn-success" type="button" (click)="createMovie()">
+          Ajouter
+        </button>
+        <button class="btn btn-primray" type="button" (click)="moviePopupOut()">
+          Annuler
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Confirmation Popup to Like a movie -->
+
+</main>
+
+<!--
+
+<style type="text/css">
+  A:link { COLOR: black; TEXT-DECORATION: none; font-weight: normal }
+  A:visited { COLOR: black; TEXT-DECORATION: none; font-weight: normal }
+  A:active { COLOR: black; TEXT-DECORATION: none }
+  A:hover { COLOR: blue; TEXT-DECORATION: none; font-weight: none }
+</style>-->

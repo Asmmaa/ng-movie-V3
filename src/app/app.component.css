@@ -1,0 +1,29 @@
+header h1.AppName {
+  font-family: "Agency FB";
+  /*  color: rgba(10, 14, 85, 0.8);*/
+  color: #ebe8df;
+  /*  margin-left: 25px;*/
+
+  font-size: 80px;
+  background-color: rgba(10, 14, 85, 0.8);
+  border-style: outset;
+  padding: 10px;
+  -webkit-margin-before: 0%;
+
+}
+
+#community {
+  font-size: 30px;
+}
+
+header #Applogo {
+  margin-left: 15px;
+  margin-top: 20px;
+  height: 150px;
+  opacity: 0.8;
+}
+
+
+
+
+
